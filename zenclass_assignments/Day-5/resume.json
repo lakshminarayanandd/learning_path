@@ -1,0 +1,65 @@
+{
+    "name": "Lakshmi Narayanan",
+    "title": "Software Developer (MERN Stack)",
+    "contact": {
+      "email": "lakshminarayanandd@gmail.com",
+      "phone": "+91-9884128747",
+      "address": "Thoraipakkam, Chennai, Tamil Nadu, 600097"
+    },
+    "summary": `Motivated and skilled software developer currently pursuing MERN stack training. 
+                Completed MCA degree in 2010 and have a diverse entrepreneurial background spanning over 13 years. 
+                Passionate about building web applications using modern technologies.`,
+    "experience": [
+      {
+        "position": "Founder & CEO",
+        "company": "LN Media Networks",
+        "location": "Chennai, Tamil Nadu",
+        "start_date": "2010-10",
+        "description": `I provide comprehensive business solutions through a range of services including ad films, 
+                        copywriting, and holistic branding strategies. Leveraging the power of both digital and printing media, 
+                        I help businesses effectively communicate their message, enhance their brand identity, 
+                        and reach their target audience.` 
+      }
+    ],
+    "education": [
+      {
+        "degree": "Master of Computer Applications (MCA)",
+        "university": "Madras University",
+        "location": "Chennai, Tamil Nadu",
+        "graduation_date": "2010-05"
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "HTML/CSS",
+      "Git",
+      "Agile Development"
+    ],
+    "certifications": [
+      {
+        "name": "MERN Stack Development",
+        "issuer": "Guvi Learning Platform",
+        "completion_date": "2023-09"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "proficiency": "Fluent"
+      },
+      {
+        "name": "Tamil",
+        "proficiency": "Fluent"
+      }
+    ],
+    "interests": [
+      "Web development",
+      "Open-source projects",
+      "Entrepreneurship"
+    ]
+  }
+  
