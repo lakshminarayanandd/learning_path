@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagination with DOM Manipulation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .pagination li {
+        margin-right: 10px;
+      }
+
+      .pagination li a {
+        display: block;
+        padding: 5px 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        text-decoration: none;
+        color: #333;
+        border-radius: 3px;
+      }
+
+      .pagination li a:hover {
+        background-color: #ddd;
+      }
+
+      .pagination li.active a {
+        background-color: #007bff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ipsum
+        vitae magna hendrerit tempus.
+      </p>
+      <p>
+        Curabitur pulvinar, elit et blandit euismod, nisi ipsum varius orci,
+        eget volutpat elit arcu ut ante.
+      </p>
+      <p>
+        Nullam tincidunt mauris in erat bibendum, sit amet egestas nisl varius.
+      </p>
+      <p>Donec eu quam vitae odio egestas interdum.</p>
+      <p>
+        Etiam malesuada, orci a imperdiet aliquam, velit enim interdum turpis,
+        nec viverra lectus odio id elit.
+      </p>
+      <p>Vestibulum nec neque at est hendrerit eleifend.</p>
+      <p>Quisque euismod purus et commodo aliquet.</p>
+      <p>
+        Integer feugiat, mi nec pharetra bibendum, odio turpis dictum turpis,
+        non dictum mi purus vel justo.
+      </p>
+      <p>
+        Aliquam ultricies nisl vitae lectus consequat, ac congue odio blandit.
+      </p>
+      <p>
+        Morbi euismod, metus ac luctus fermentum, arcu turpis dictum nulla, nec
+        tristique orci metus nec neque.
+      </p>
+    </div>
+
+    <ul class="pagination" id="pagination"></ul>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const itemsPerPage = 3; // Number of items per page
+        const content = document.getElementById("content");
+        const paginationContainer = document.getElementById("pagination");
+
+        // Get all content items
+        const items = content.querySelectorAll("p");
+
+        // Calculate the total number of pages
+        const totalPages = Math.ceil(items.length / itemsPerPage);
+
+        // Function to display the selected page and hide others
+        function showPage(pageNum) {
+          const startIndex = (pageNum - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+
+          items.forEach((item, index) => {
+            item.style.display =
+              index >= startIndex && index < endIndex ? "block" : "none";
+          });
+        }
+
+        // Function to create pagination links
+        function createPagination() {
+          for (let i = 1; i <= totalPages; i++) {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = "#";
+            link.textContent = i;
+            li.appendChild(link);
+            paginationContainer.appendChild(li);
+
+            // Add event listener to each pagination link
+            link.addEventListener("click", function (event) {
+              event.preventDefault();
+              showPage(i);
+              // Mark the current page as active
+              const activeLink = paginationContainer.querySelector(".active");
+              if (activeLink) {
+                activeLink.classList.remove("active");
+              }
+              li.classList.add("active");
+            });
+          }
+        }
+
+        // Initial page load
+        showPage(1);
+        createPagination();
+      });
+    </script>
+  </body>
+</html>

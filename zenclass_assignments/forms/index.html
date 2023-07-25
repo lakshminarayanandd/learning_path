@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form and Table Example</title>
+    <style>
+      /* Add your CSS styling here */
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" required /><br />
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" required /><br />
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" required /><br />
+
+      <label for="pincode">Pincode:</label>
+      <input type="text" id="pincode" required /><br />
+
+      <label>Gender:</label>
+      <input type="radio" name="gender" value="male" required /> Male
+      <input type="radio" name="gender" value="female" required /> Female<br />
+
+      <label>Choice of Food:</label>
+      <input type="checkbox" name="food" value="pizza" /> Pizza
+      <input type="checkbox" name="food" value="burger" /> Burger
+      <input type="checkbox" name="food" value="pasta" /> Pasta
+      <input type="checkbox" name="food" value="salad" /> Salad
+      <input type="checkbox" name="food" value="sushi" /> Sushi<br />
+
+      <label for="state">State:</label>
+      <input type="text" id="state" required /><br />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" required /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <table id="dataTable" border="1">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Pincode</th>
+        <th>Gender</th>
+        <th>Food</th>
+        <th>State</th>
+        <th>Country</th>
+      </tr>
+    </table>
+
+    <script>
+      // JavaScript code for handling form submission and table update
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+          appendToTable();
+          clearForm();
+        });
+
+      function appendToTable() {
+        const formData = new FormData(document.getElementById("myForm"));
+        const tableRow = document.createElement("tr");
+
+        formData.forEach((value) => {
+          const cell = document.createElement("td");
+          cell.textContent = value;
+          tableRow.appendChild(cell);
+        });
+
+        document.getElementById("dataTable").appendChild(tableRow);
+      }
+
+      function clearForm() {
+        document.getElementById("myForm").reset();
+      }
+
+      // Below are some basic test cases using JavaScript assertions (you can use a proper testing library for comprehensive tests)
+
+      function testFormSubmission() {
+        const form = document.getElementById("myForm");
+        form.elements["firstname"].value = "John";
+        form.elements["lastname"].value = "Doe";
+        form.elements["address"].value = "123 Main St";
+        form.elements["pincode"].value = "12345";
+        form.elements["gender"][0].checked = true;
+        form.elements["food"][0].checked = true;
+        form.elements["food"][2].checked = true;
+        form.elements["state"].value = "California";
+        form.elements["country"].value = "USA";
+
+        form.submit();
+
+        const dataTable = document.getElementById("dataTable");
+        const rows = dataTable.getElementsByTagName("tr");
+        const lastRow = rows[rows.length - 1];
+        const cells = lastRow.getElementsByTagName("td");
+
+        assert(cells[0].textContent === "John");
+        assert(cells[1].textContent === "Doe");
+        assert(cells[2].textContent === "123 Main St");
+        assert(cells[3].textContent === "12345");
+        assert(cells[4].textContent === "male");
+        assert(cells[5].textContent === "pizza, pasta");
+        assert(cells[6].textContent === "California");
+        assert(cells[7].textContent === "USA");
+      }
+
+      function runTests() {
+        testFormSubmission();
+        // Add more test cases if needed
+      }
+
+      function assert(condition) {
+        if (!condition) {
+          throw new Error("Test failed");
+        }
+      }
+
+      runTests();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+#first{
+    width: 200px;
+    height: 200px;
+    background-color: hsl(116, 18%, 69%) ;
+    display: inline-block;
+}
+
+#second{
+    width: 200px;
+    height: 200px;
+    background-color: hsl(245, 31%, 57%) ;
+    display: inline-block;ṁ  
+}
